@@ -1,5 +1,12 @@
 <script setup lang="ts">
-import { profileList } from '@/composable/data/ProfileList.ts'
+import router from '@/router'
+import { profileList } from '@/composable/data/profileList'
+
+const goToProfile = (profile) => {
+  if (profile.title === 'personal') {
+    router.push('/personal')
+  }
+}
 </script>
 
 <template>
@@ -13,7 +20,8 @@ import { profileList } from '@/composable/data/ProfileList.ts'
         <img :src="profile.img">
       </div>
       <p class="card-title">{{ profile.title }}</p>
-      <v-btn style="color: #FFF; background-color: #FF4411;" class="card-btn">Read More</v-btn>
+      <v-btn style="color: #FFF; background-color: #FF4411;" class="card-btn" @click="goToProfile(profile)">Read
+        More</v-btn>
     </div>
   </div>
 </template>
